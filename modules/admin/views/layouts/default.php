@@ -33,11 +33,17 @@ AppAsset::register($this);
 		],
 	]);
 	echo Nav::widget([
-		'options' => ['class' => 'navbar-nav navbar-right'],
+		'options' => ['class' => 'navbar-nav navbar-left'],
 		'items' => [
 			['label' => 'Home', 'url' => ['default/index']],
-			['label' => 'About', 'url' => ['default/about']],
+			['label' => '管理员', 'url' => ['admin/index']],
 			['label' => 'Contact', 'url' => ['default/contact']],
+		]
+	]);
+
+	echo Nav::widget([
+		'options' => ['class' => 'navbar-nav navbar-right'],
+		'items' => [
 			Yii::$app->user->isGuest ? (
 			['label' => 'Login', 'url' => ['common/login']]
 			) : (

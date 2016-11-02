@@ -27,31 +27,38 @@ AppAsset::register($this);
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => 'My Company',
+        'brandLabel' => '<img src="/imgs/logo48.png">',
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
     ]);
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
+    echo Nav::widget([ // 左边的菜单
+        'options' => ['class' => 'navbar-nav navbar-left'],
         'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
-            Yii::$app->user->isGuest ? (
-                ['label' => 'Login', 'url' => ['/site/login']]
-            ) : (
-                '<li>'
-                . Html::beginForm(['/site/logout'], 'post', ['class' => 'navbar-form'])
-                . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->username . ')',
-                    ['class' => 'btn btn-link']
-                )
-                . Html::endForm()
-                . '</li>'
-            )
-        ],
+            ['label' => '首页', 'url' => ['/site/index']],
+            ['label' => '文章', 'url' => ['/post/index']],
+        ]
+    ]);
+
+    if (Yii::$app->user->isGuest) {
+        $rightItems[] = ['label' => '注册', 'url' => ['/ucenter/signup']];
+        $rightItems[] = ['label' => '登录', 'url' => ['/ucenter/login']];
+    } else {
+        $rightItems[] = [
+            'label' => '<img src="/imgs/logo.png">',
+            'linkOptions' => ['class'=>'avatar'],
+            'url'=>['/ucenter/index'],
+            'items' => [
+                ['label' => '<i class="fa fa-user fa-fw"></i> 会员中心', 'url' => ['/ucenter/index']],
+                ['label' => '<i class="fa fa-sign-out fa-fw"></i> 退出登录', 'url' => ['/ucenter/logout']],
+            ]
+        ];
+    }
+    echo Nav::widget([ // 右边的菜单
+        'options' => ['class' => 'navbar-nav navbar-right'],
+        'encodeLabels' => false,
+        'items' => $rightItems,
     ]);
     NavBar::end();
     ?>

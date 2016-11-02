@@ -13,31 +13,31 @@ use yii\web\Controller;
 
 class CommonController extends Controller
 {
-	public function actions()
-	{
-		return [
-			'error' => [
-				'class' => 'yii\web\ErrorAction',
-			],
-			'captcha' => [
-				'class' => 'yii\captcha\CaptchaAction',
-				'width' => 105,
-				'height' => 34,
-				'minLength' => 5,
-				'maxLength' => 5,
-				'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
-			],
-		];
-	}
+    public function actions()
+    {
+        return [
+            'error' => [
+                'class' => 'yii\web\ErrorAction',
+            ],
+            'captcha' => [
+                'class' => 'yii\captcha\CaptchaAction',
+                'width' => 105,
+                'height' => 34,
+                'minLength' => 5,
+                'maxLength' => 5,
+                'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
+            ],
+        ];
+    }
 
-	public function actionLogin() {
-		$this->layout = false;
+    public function actionLogin() {
+        $this->layout = false;
 
-		$model = new AdminLoginForm();
-		if($model->load(\Yii::$app->request->post()) && $model->login()) {
+        $model = new AdminLoginForm();
+        if($model->load(\Yii::$app->request->post()) && $model->login()) {
 
-		}
+        }
 
-		return $this->render('login', ['model'=>$model]);
-	}
+        return $this->render('login', ['model'=>$model]);
+    }
 }

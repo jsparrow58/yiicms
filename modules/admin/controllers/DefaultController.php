@@ -8,7 +8,7 @@ namespace app\modules\admin\controllers;
 class DefaultController extends BaseController
 {
 
-	/**
+    /**
      * Renders the index view for the module
      * @return string
      */
