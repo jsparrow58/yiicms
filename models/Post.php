@@ -2,23 +2,23 @@
 
 namespace app\models;
 
-use app\models\base\BaseModel;
 use Yii;
 
 /**
  * This is the model class for table "{{%post}}".
  *
- * @property string $id
- * @property string $category
+ * @property integer $id
+ * @property integer $category
  * @property string $title
  * @property string $summary
  * @property string $content
  * @property string $tags
- * @property string $author_id
- * @property string $created_at
- * @property string $updated_id
- * @property string $updated_at
+ * @property integer $author_id
+ * @property integer $created_at
+ * @property integer $updated_id
+ * @property integer $updated_at
  * @property integer $status
+ * @property string $label_img
  *
  * @property Comment[] $comments
  * @property Admin $author
@@ -26,7 +26,7 @@ use Yii;
  * @property Admin $updated
  * @property PostTags[] $postTags
  */
-class Post extends BaseModel
+class Post extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
@@ -45,7 +45,7 @@ class Post extends BaseModel
             [['category', 'author_id', 'created_at', 'updated_id', 'updated_at', 'status'], 'integer'],
             [['content'], 'required'],
             [['content'], 'string'],
-            [['title', 'summary', 'tags'], 'string', 'max' => 255],
+            [['title', 'summary', 'tags', 'label_img'], 'string', 'max' => 255],
             [['author_id'], 'exist', 'skipOnError' => true, 'targetClass' => Admin::className(), 'targetAttribute' => ['author_id' => 'id']],
             [['category'], 'exist', 'skipOnError' => true, 'targetClass' => Category::className(), 'targetAttribute' => ['category' => 'id']],
             [['updated_id'], 'exist', 'skipOnError' => true, 'targetClass' => Admin::className(), 'targetAttribute' => ['updated_id' => 'id']],
@@ -69,6 +69,7 @@ class Post extends BaseModel
             'updated_id' => 'Updated ID',
             'updated_at' => 'Updated At',
             'status' => 'Status',
+            'label_img' => 'Label Img',
         ];
     }
 

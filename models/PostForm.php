@@ -15,6 +15,7 @@ class PostForm extends Model
 {
     public $id;
     public $title;
+    public $label_img;
     public $category;
     public $summary;
     public $content;
@@ -36,6 +37,7 @@ class PostForm extends Model
         return [
             'title' => '标题',
             'category' => '栏目',
+            'label_img' => '标签图',
             'summary' => '摘要',
             'content' => '内容',
             'tags' => '标签',
