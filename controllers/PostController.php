@@ -10,6 +10,7 @@ namespace app\controllers;
 
 
 use app\controllers\base\BaseController;
+use app\models\Category;
 use app\models\PostForm;
 
 /**
@@ -18,6 +19,17 @@ use app\models\PostForm;
  */
 class PostController extends BaseController
 {
+    public function actions()
+    {
+        return [
+            'upload'=>[
+                'class' => 'app\widgets\file_upload\UploadAction',     //这里扩展地址别写错
+                'config' => [
+                    'imagePathFormat' => "/image/{yyyy}{mm}{dd}/{time}{rand:6}",
+                ]
+            ]
+        ];
+    }
 
     /**
      * 说明:文章列表
@@ -29,7 +41,7 @@ class PostController extends BaseController
 
     public function actionCreate() {
         $model = new PostForm();
-
+        Category::getCategoryArray();
         return $this->render('create', ['model' => $model]);
     }
 }

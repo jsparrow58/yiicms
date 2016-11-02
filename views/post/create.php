@@ -7,6 +7,7 @@
  * Created by PhpStorm.
  */
 
+use app\models\Category;
 use yii\bootstrap\ActiveForm;
 use yii\bootstrap\Html;
 
@@ -23,7 +24,12 @@ $this->params['breadcrumbs'][] = ['label'=> $this->title];
                 <?php $form = ActiveForm::begin()?>
 
                 <?= $form->field($model, 'title')->textInput(['maxLength'=>true]) ?>
-                <?= $form->field($model, 'category')->dropDownList(['1'=>'分类1', '2'=>'分类2']) ?>
+                <?= $form->field($model, 'category')->dropDownList(Category::getCategoryArray(), ['prompt'=>'请选择栏目']) ?>
+                <?= $form->field($model, 'label_img')->widget('app\widgets\file_upload\FileUpload',[
+                    'config'=>[
+                    //图片上传的一些配置，不写调用默认配置
+                    ]
+                ]) ?>
                 <?= $form->field($model, 'summary')->textInput(['maxLength'=>true]) ?>
                 <?= $form->field($model, 'content')->textarea() ?>
                 <?= $form->field($model, 'tags')->textInput(['maxLength'=>true]) ?>
