@@ -62,4 +62,22 @@ class PostExtends extends BaseModel
     {
         return $this->hasOne(Post::className(), ['id' => 'post_id']);
     }
+
+    /**
+     * 说明: 更新文章统计数据
+     * @param $condition array
+     * @param $attribute string
+     * @param $num integer
+     */
+    public function upCounter($condition, $attribute, $num = 1)
+    {
+        $model = $this->findOne($condition);
+        if(!$model) {
+            $this->setAttributes($condition);
+            $this->$attribute = $num;
+            $this->save();
+        } else {
+            $model->updateCounters([$attribute=>$num]);
+        }
+    }
 }

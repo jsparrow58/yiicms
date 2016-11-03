@@ -1,6 +1,7 @@
 <?php
-namespace common\widgets\ueditor;
+namespace app\widgets\ueditor;
 
+use app\widgets\ueditor\assets\UeditorAsset;
 use Yii;
 use yii\web\View;
 use yii\helpers\Html;
@@ -9,7 +10,6 @@ use yii\helpers\Json;
 use yii\helpers\ArrayHelper;
 use yii\widgets\InputWidget;
 
-use common\widgets\ueditor\assets\UeditorAsset;
 
 
 class Ueditor extends InputWidget

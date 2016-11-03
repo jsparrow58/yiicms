@@ -1,10 +1,9 @@
 <?php
-namespace common\widgets\ueditor;
+namespace app\widgets\ueditor;
 
 use Yii;
 use yii\base\Action;
 use yii\helpers\ArrayHelper;
-use common\widgets\ueditor\Uploader;
 
 class UeditorAction extends Action
 {

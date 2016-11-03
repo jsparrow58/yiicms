@@ -5,7 +5,7 @@
  * @license http://www.yii-china.com
  */
 
-namespace common\widgets\tags\assets;
+namespace app\widgets\tags\assets;
 
 use yii\web\AssetBundle;
 

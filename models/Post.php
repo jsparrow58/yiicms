@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use app\models\base\BaseModel;
 use Yii;
 
 /**
@@ -12,7 +13,6 @@ use Yii;
  * @property string $title
  * @property string $summary
  * @property string $content
- * @property string $tags
  * @property integer $author_id
  * @property integer $created_at
  * @property integer $updated_id
@@ -25,9 +25,13 @@ use Yii;
  * @property Category $category0
  * @property Admin $updated
  * @property PostTags[] $postTags
+ * @property PostExtends $extends
  */
-class Post extends \yii\db\ActiveRecord
+class Post extends BaseModel
 {
+    const IS_VALID = 1; // 发布
+    const NO_VALID = 0; // 未发布
+
     /**
      * @inheritdoc
      */
@@ -45,7 +49,7 @@ class Post extends \yii\db\ActiveRecord
             [['category', 'author_id', 'created_at', 'updated_id', 'updated_at', 'status'], 'integer'],
             [['content'], 'required'],
             [['content'], 'string'],
-            [['title', 'summary', 'tags', 'label_img'], 'string', 'max' => 255],
+            [['title', 'summary', 'label_img'], 'string', 'max' => 255],
             [['author_id'], 'exist', 'skipOnError' => true, 'targetClass' => Admin::className(), 'targetAttribute' => ['author_id' => 'id']],
             [['category'], 'exist', 'skipOnError' => true, 'targetClass' => Category::className(), 'targetAttribute' => ['category' => 'id']],
             [['updated_id'], 'exist', 'skipOnError' => true, 'targetClass' => Admin::className(), 'targetAttribute' => ['updated_id' => 'id']],
@@ -63,7 +67,6 @@ class Post extends \yii\db\ActiveRecord
             'title' => 'Title',
             'summary' => 'Summary',
             'content' => 'Content',
-            'tags' => 'Tags',
             'author_id' => 'Author ID',
             'created_at' => 'Created At',
             'updated_id' => 'Updated ID',
@@ -112,4 +115,14 @@ class Post extends \yii\db\ActiveRecord
     {
         return $this->hasMany(PostTags::className(), ['post_id' => 'id']);
     }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getExtends()
+    {
+        return $this->hasOne(PostExtends::className(), ['post_id' => 'id']);
+    }
+
+
 }

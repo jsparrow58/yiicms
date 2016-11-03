@@ -1,13 +1,13 @@
 <?php
-namespace common\widgets\tags;
+namespace app\widgets\tags;
 /**
  * 标签云组件
  */
+use app\widgets\tags\assets\TagAsset;
 use Yii;
 use yii\widgets\InputWidget;
 use yii\web\View;
 use yii\helpers\Html;
-use common\widgets\tags\assets\TagAsset;
 
 class TagWidget extends InputWidget
 {

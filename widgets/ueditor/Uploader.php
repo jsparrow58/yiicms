@@ -1,5 +1,5 @@
 <?php
-namespace common\widgets\ueditor;
+namespace app\widgets\ueditor;
 
 class Uploader
 {

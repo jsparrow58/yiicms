@@ -4,7 +4,7 @@
  * @copyright Copyright (c) 2015 Yii中文网
  */
 
-namespace common\widgets\ueditor\assets;
+namespace app\widgets\ueditor\assets;
 
 use Yii;
 use yii\web\AssetBundle;

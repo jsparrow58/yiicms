@@ -64,7 +64,7 @@ class AdminController extends BaseController
     public function actionCreate()
     {
         $model = new Admin();
-		$model->scenario = 'create';
+        $model->scenario = 'create';
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
