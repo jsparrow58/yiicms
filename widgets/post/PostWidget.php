@@ -24,7 +24,7 @@ class PostWidget extends Widget {
     public $more = true;
 
     // 是否显示分页
-    public $page = false;
+    public $page = true;
 
     /**
      * 说明:运行组件
@@ -34,15 +34,14 @@ class PostWidget extends Widget {
         $curPage = Yii::$app->request->get('page', 1);
         // 查询条件
         $condition = ['=', 'status', Post::IS_VALID];
-        $res = PostForm::getList($condition, $curPage, $this->limit);
+        $res = PostForm::getList($condition, $curPage, $this->limit); // 获取页面数据
         $result['title'] = $this->title?:'最新文章';
         $result['more'] = Url::to(['post/index']);
-        $result['body'] = $res['data']?:[];
         if ($this->page) {
             $pages = new Pagination(['totalCount'=>$res['count'], 'pageSize'=>$res['pageSize']]);
             $result['page'] = $pages;
         }
 
-        return $this->render('index', ['data' => $result]);
+        return $this->render('index', ['data' => $result, 'model'=>$res['data']]);
     }
 }

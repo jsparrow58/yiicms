@@ -21,6 +21,12 @@ class BaseModel extends ActiveRecord
 {
     /**
      * 说明:获取当前页数据
+     * 返回值：
+     * return['count'] 记录总条数
+     * return['curPage'] 当前页，已经重算过
+     * return['start'] 起始行数
+     * return['end'] 末尾行数
+     * return['data'] 返回的结果集
      * @param \yii\db\Query $query
      * @param int $curPage
      * @param int $pageSize
@@ -37,19 +43,18 @@ class BaseModel extends ActiveRecord
             return ['count'=>0, 'curPage'=>$curPage, 'pageSize'=>$pageSize, 'start'=>0, 'data'=>[]];
         }
 
-        // 重算当前面防止显示超出的页
+        // 重算当前页防止给的参数超出的总页数
         $curPage = (ceil($data['count']/$pageSize)<$curPage) ? ceil($data['count']/$pageSize) : $curPage;
         $data['curPage'] = $curPage;
-        //起始页
+        //总第条几开始
         $data['start'] = ($curPage-1)*$pageSize+1;
-        // 末页
+        // 到第几条结束
         $data['end'] = (ceil($data['count']/$pageSize) == $curPage) ? $data['count'] : (($curPage-1)*$pageSize+$pageSize);
+        $data['pageSize'] = $pageSize;
         $data['data'] = $query
             ->offset(($curPage-1)*$pageSize)
             ->limit($pageSize)
-            //->asArray()
             ->all();
-        var_dump($data);
         return $data;
     }
 }

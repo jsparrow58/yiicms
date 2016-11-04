@@ -10,10 +10,10 @@ use Yii;
  *
  * @property integer $id
  * @property string $post_id
- * @property string $browser
- * @property string $collect
- * @property string $praise
- * @property string $comment
+ * @property string $browser 浏览数
+ * @property string $collect 收藏数
+ * @property string $praise 点赞数
+ * @property string $comment 评论数
  *
  * @property Post $post
  */

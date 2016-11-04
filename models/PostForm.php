@@ -49,6 +49,7 @@ class PostForm extends Model
      * @param int $page
      * @param int $pageSize
      * @param array $orderBy
+     * @return array
      */
     public static function getList($condition, $curPage=1, $pageSize=5, $orderBy = ['id'=>SORT_DESC])
     {
@@ -164,7 +165,9 @@ class PostForm extends Model
 
     /**
      * 说明:添加标签
-     * @param $data
+     * @param $event
+     * @throws Exception
+     * @internal param $data
      */
     public function _eventAddTag($event) {
         //保存标签

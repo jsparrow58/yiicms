@@ -157,3 +157,11 @@ a.desc:after {
 .panel-body {
 
 }
+
+.post_block img {
+    max-width: 100px;
+}
+
+.panel-footer span {
+    padding-right: 5px;
+}

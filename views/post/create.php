@@ -51,7 +51,8 @@ $this->params['breadcrumbs'][] = ['label'=> $this->title];
                     ]
                 ]) ?>
 
-                <?= $form->field($model, 'tags')->widget('app\widgets\tags\TagWidget') ?>
+                <?=
+                $form->field($model, 'tags')->widget('app\widgets\tags\TagWidget') ?>
 
                 <div class="form-group">
                     <?= Html::submitButton('发布',['class'=>'btn btn-success']) ?>
