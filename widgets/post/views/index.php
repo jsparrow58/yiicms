@@ -1,8 +1,7 @@
 <?php
 /**
  *
- * @var $model [] \app\models\Post
- *
+ * @var $model
  * User: JSparrow
  * DateTime: 2016/11/3 15:46
  * Created by PhpStorm.
@@ -29,13 +28,13 @@ foreach ($model as $item) : ?>
         <div class="panel-footer">
             <span class="post_comment">
                 <a class="grayline" title="" href="<?= Url::to(['post/view' , 'id'=>$item->id]) ?>#commentform">
-                    <i class="fa fa-comments"></i> 评论(<?= isset($item->extends->comment) ?: '0'  ?>)</a>
+                    <i class="fa fa-comments"></i> 评论(<?= isset($item->extends) ? $item->extends->comment: 0  ?>)</a>
             </span>
             <span class="post_view">
                 <a class="grayline" href="<?= Url::to(['post/view', 'id'=>$item->id])?>">
-                    <i class="fa fa-eye"></i>阅读(<?= isset($item->extends->browser) ?: '0'  ?>)</a>
+                    <i class="fa fa-eye"></i>阅读(<?= isset($item->extends) ? $item->extends->browser: 0  ?>)</a>
             </span>
-            <i class="fa fa-feed"></i>推荐(<?= isset($item->extends->praise) ?: '0'?>)
+            <i class="fa fa-feed"></i>推荐(<?= isset($item->extends) ? $item->extends->praise: 0  ?>)
             发布于 <span class="postdate"><?= date('Y-m-d H:i:s',$item->created_at) ?></span></div>
         <div class="clear"></div>
     </div>

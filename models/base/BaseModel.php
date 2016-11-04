@@ -10,8 +10,6 @@ namespace app\models\base;
 
 
 use yii\db\ActiveRecord;
-use yii\db\Query;
-use yii\db\QueryTrait;
 
 /**
  * 基础模型
