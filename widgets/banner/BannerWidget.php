@@ -13,22 +13,22 @@ use yii\bootstrap\Widget;
 
 class BannerWidget extends Widget
 {
-    public $item = [];
+    public $items = [];
 
     public function init()
     {
-        if(empty($this->item)){
-            $this->item = [
-                ['label'=>'demo', 'image_url'=>'/images/banner/b_0.png', 'url'=>['site/index'], 'html'=>'', 'active'=>true],
-                ['label'=>'demo', 'image_url'=>'/images/banner/b_1.png', 'url'=>['site/index'], 'html'=>''],
-                ['label'=>'demo', 'image_url'=>'/images/banner/b_2.png', 'url'=>['site/index'], 'html'=>''],
+        if(empty($this->items)){
+            $this->items = [
+                ['label'=>'demo', 'image_url'=>'/image/banner/b0.jpg', 'url'=>['site/index'], 'html'=>'', 'active'=>true],
+                ['label'=>'demo', 'image_url'=>'/image/banner/b1.jpg', 'url'=>['site/index'], 'html'=>''],
+                ['label'=>'demo', 'image_url'=>'/image/banner/b2.jpg', 'url'=>['site/index'], 'html'=>''],
             ];
         }
     }
 
     public function run()
     {
-        $data['item'] = $this->item;
-        return $this->render('index', ['date'=>$data]);
+        $data['items'] = $this->items;
+        return $this->render('index', ['data'=>$data]);
     }
 }

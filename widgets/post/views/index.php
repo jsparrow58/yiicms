@@ -11,8 +11,6 @@ use yii\helpers\Url;
 /** @var \app\models\Post $item */
 ?>
 
-<div class="row">
-    <div class="col-lg-9">
 <?php
 /** @var \app\models\Post $item */
 foreach ($model as $item) : ?>
@@ -46,8 +44,3 @@ foreach ($model as $item) : ?>
             'pagination'=>$data['page'],//分页类
         ]);
         ?>
-    </div>
-    <div class="col-lg-3">
-
-    </div>
-</div>

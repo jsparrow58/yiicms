@@ -14,8 +14,18 @@ $this->params['breadcrumbs'][] = ['label'=>$this->title];
 ?>
 <div class="row">
     <h1><?= Html::encode($this->title) ?></h1>
-    <p>
-        <?= Html::a('新建文章', ['post/create'], ['class' => 'btn btn-success']) ?>
-    </p>
-    <?= PostWidget::widget() ?>
+    <div class="col-lg-9">
+        <?= PostWidget::widget() ?>
+    </div>
+    <div class="col-lg-3">
+        <div class="panel">
+            <div class="panel-title">
+                操作
+            </div>
+            <div class="panel-body">
+                <?= Html::a('新建文章', ['post/create'], ['class' => 'btn btn-success btn-large', 'style'=>'width:100%;']) ?>
+            </div>
+        </div>
+
+    </div>
 </div>
